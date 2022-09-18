@@ -1,6 +1,6 @@
 //Evento para crear nuevo libro
 document.getElementById("formulario").addEventListener("submit", crear);
-
+let libros = [];
 //funcion crear
 
 function crear(e) {
@@ -14,15 +14,9 @@ function crear(e) {
     precio,
   };
 
-  if (localStorage.getItem("Libros") === null) {
-    let libros = [];
-    libros.push(libro);
-    localStorage.setItem("Libros", JSON.stringify(libros));
-  } else {
-    let libros = localStorage.getItem(JSON.parse("Libros"));
-    libros.push(libro);
-    localStorage.setItem("Libros", JSON.stringify(libros));
-  }
+  libros.push(libro);
+  localStorage.setItem("Libros", JSON.stringify(libros));
+
   leer();
   document.getElementById("formulario").reset();
   e.preventDefault();
